@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Felicidades Nuria</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4rem;
+        margin: 0;
+        animation: fadeInDown 1.5s ease;
+        background: linear-gradient(to right, #ffe259, #ffa751);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .message {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        animation: fadeIn 2s ease 1.5s forwards;
+        opacity: 0;
+      }
+
+      .fireworks {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .firework {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        animation: sparkle 1s ease infinite;
+      }
+
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(2);
+          opacity: 0.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Felicidades Nurie &nbsp;</h1>
+      <p class="message">Te queremos✨</p>
+    </div>
+
+    <div class="fireworks"></div>
+
+    <script>
+      const fireworks = document.querySelector('.fireworks');
+
+      function createFirework() {
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+        const size = Math.random() * 5 + 5;
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        const duration = Math.random() * 2 + 1;
+
+        firework.style.width = `${size}px`;
+        firework.style.height = `${size}px`;
+        firework.style.left = `${x}px`;
+        firework.style.top = `${y}px`;
+        firework.style.animationDuration = `${duration}s`;
+
+        fireworks.appendChild(firework);
+
+        setTimeout(() => {
+          firework.remove();
+        }, duration * 1000);
+      }
+
+      setInterval(createFirework, 200);
+    </script>
+  </body>
+</html>
